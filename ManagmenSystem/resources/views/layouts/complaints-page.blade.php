@@ -8,6 +8,7 @@
                  <div class="col-6">
                 <select class="form-control" onchange="location = this.value" name="chooseDepartment" id="chooseDepartment">
                     @if(isset($department))
+                        <option disabled selected>Select Any Of Department</option>
                 @foreach( $department as $department )
                         <option value="{{route('getting.subfields',$department->id)}}">{{ $department->name  }}</option>
                 @endforeach

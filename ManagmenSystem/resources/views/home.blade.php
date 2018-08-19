@@ -33,6 +33,15 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Active Now:: {{Auth::user()->name}}</a>
             </li>
+
+
+            <li class="nav-item">
+                <form action="{{route('logout')}}" method="post">
+                    @csrf
+                    {{method_field('POST')}}
+                    <input type="submit" class="nav-link" value="Logout">
+                </form>
+            </li>
         </ul>
     </div>
 </nav>
