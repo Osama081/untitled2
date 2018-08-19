@@ -12,14 +12,18 @@
 */
 
 
-Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 Route::group(["middleware" => ['auth']],function (){
-
-    Route::get('/','ComplaintsController@complainForm');
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/complain','ComplaintsController@complainForm')->name('complain');
     Route::get('/api/subfields/{id}','FieldController@getList')->name('getting.subfields');
+    Route::get('/home',function (){
+        return view('layouts.agent-dashboard');
+    })->name('dash.board');
     Route::resource('submit','ComplaintsController');
-
+    Route::get('/pending/complains',function (){
+      $list = \App\Complaint::all()->where('status',0);
+        return view('layouts.complainId',compact('list'));
+    })->name('pending.complain');
 
 });

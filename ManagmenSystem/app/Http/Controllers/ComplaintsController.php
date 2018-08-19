@@ -37,7 +37,9 @@ class ComplaintsController extends Controller
     public function store(Request $request)
     {
         $complain = new Complaint();
-        $complain->agentId = 1;
+
+
+        $complain->agentId = $request->agentId;
 
         $dep = SubField::all()->where('id',$request->chooseSubField);
 
@@ -45,6 +47,9 @@ class ComplaintsController extends Controller
         $complain->department = $dep->department;
         $complain->status = false;
         $complain->description = $request->description;
+
+        //As other modules are not ready thats why i am
+        //giving this a default value
         $complain->resolvedBy = 1;
         $complain->save();
         return view('layouts.agent-dashboard');

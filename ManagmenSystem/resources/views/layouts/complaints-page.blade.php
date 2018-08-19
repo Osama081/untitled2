@@ -1,14 +1,5 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{asset("css/app.css")}}">
-    <title>Welcome To Complaints</title>
-</head>
-<body>
+@extends('home')
+@section('content')
     <h1 class="text-center text-primary">Welcome To the Complaints Menu</h1>
     <br>
     <br>
@@ -43,12 +34,11 @@
                             </select>
                                 </div>
                                 <br>
-                            <textarea class="form-control" name="description" id="description" cols="30" rows="10"></textarea>
-
+                            <textarea class="form-control pt-15" name="description" id="description" cols="30" rows="10"></textarea>
+                                <input type="text" value="{{Auth::user()->id}}" name="agentId" hidden>
                             <input type="submit" class="btn btn-dark">
                             </div>
                         </form>
                     @endif
             </div>
-</body>
-</html>
+@endsection
