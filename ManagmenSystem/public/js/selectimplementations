@@ -1,0 +1,20 @@
+var app = new Vue({
+    el : "#app",
+    value: '',
+    data : {
+        list : []
+    },
+    methods :{
+        fetchList: function () {
+            axios.get('/api/subfields/'+this.value)
+                .then(function (list) {
+                    this.list = list;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+        }
+    }
+
+
+});
