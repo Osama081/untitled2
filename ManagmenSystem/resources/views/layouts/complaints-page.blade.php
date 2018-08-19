@@ -13,8 +13,9 @@
     <br>
     <br>
             <div id="app">
+                <div class="row">
+                 <div class="col-6">
                 <select class="form-control" onchange="location = this.value" name="chooseDepartment" id="chooseDepartment">
-
                     @if(isset($department))
                 @foreach( $department as $department )
                         <option value="{{route('getting.subfields',$department->id)}}">{{ $department->name  }}</option>
@@ -26,22 +27,28 @@
                             @endforeach
                     @endif
                 </select>
+                 </div>
+                </div>
 
                 @if(isset($subFeild))
                         <form action="/submit"  method="POST">
                             @csrf
                             {{method_field('POST')}}
+                            <div class="row">
+                                <div class="col-6">
                             <select class="form-control" name="chooseSubField" id="chooseSubField">
                                 @foreach( $subFeild as $subFeild )
                                     <option value="{{ $subFeild->id }}">{{ $subFeild->name  }}</option>
                                 @endforeach
                             </select>
-
+                                </div>
+                                <br>
                             <textarea class="form-control" name="description" id="description" cols="30" rows="10"></textarea>
+
                             <input type="submit" class="btn btn-dark">
+                            </div>
                         </form>
                     @endif
-
             </div>
 </body>
 </html>

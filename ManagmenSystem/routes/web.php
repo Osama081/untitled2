@@ -11,12 +11,15 @@
 |
 */
 
-Route::get('/','ComplaintsController@complainForm');
-
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes();
+Route::group(["middleware" => ['auth']],function (){
+
+    Route::get('/','ComplaintsController@complainForm');
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/api/subfields/{id}','FieldController@getList')->name('getting.subfields');
+    Route::resource('submit','ComplaintsController');
 
 
-Route::get('/api/subfields/{id}','FieldController@getList')->name('getting.subfields');
-Route::resource('submit','ComplaintsController');
+});

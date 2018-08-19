@@ -40,14 +40,14 @@ class ComplaintsController extends Controller
         $complain->agentId = 1;
 
         $dep = SubField::all()->where('id',$request->chooseSubField);
-//        dd($dep);
+
         foreach($dep as $dep)
         $complain->department = $dep->department;
         $complain->status = false;
         $complain->description = $request->description;
         $complain->resolvedBy = 1;
         $complain->save();
-
+        return view('layouts.agent-dashboard');
     }
 
     /**
