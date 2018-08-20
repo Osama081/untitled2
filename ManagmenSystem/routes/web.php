@@ -25,5 +25,8 @@ Route::group(["middleware" => ['auth']],function (){
       $list = \App\Complaint::all()->where('status',0);
         return view('layouts.complainId',compact('list'));
     })->name('pending.complain');
-
+    Route::get('/file/leave',function (){
+        return view('layouts.leave-application');
+    })->name('file.leave');
+    Route::post('submit/leave/application','LeaveController@submitapp')->name('leave.application');
 });
