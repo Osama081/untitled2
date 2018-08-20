@@ -33,19 +33,19 @@
                 </div>
                 <div class="col-4">
                     <label for="startdate">Select Leave Start Date:</label>
-                    <input type="text" name="startdate" id="startdate" class="form-control">
+                    <input type="text" name="startdate" id="startdate" class="form-control" required>
                     </select>
                 </div>
 
                 <div class="col-4">
                     <label for="enddate">Select Leave End Date:</label>
-                    <input type="text" name="enddate" id="enddate" class="form-control">
+                    <input type="text" name="enddate" id="enddate" class="form-control" required>
                     </select>
                 </div>
             </div>
             <div class="form-group">
                 <label for="description">Further Reasons:</label>
-                <textarea class="form-control" name="description" id="description" cols="30" rows="10"></textarea>
+                <textarea class="form-control" name="description" id="description" cols="30" rows="10" required></textarea>
             </div>
             <input value="{{ Auth::user()->id }}" id="agentId" name="agentId"  hidden>
             <div class="form-group">
